@@ -1,0 +1,128 @@
+/* Reset and base */
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    font-family: 'Arial', sans-serif;
+    background: #e0f7fa;
+    /* Light Cyan background */
+    height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+/* Wrapper to hold form and heading */
+.wrapper {
+    background: #fff;
+    /* White container */
+    padding: 40px;
+    border-radius: 15px;
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+    /* Stronger shadow */
+    width: 100%;
+    max-width: 450px;
+    /* Slightly wider */
+}
+
+/* Heading */
+h2 {
+    text-align: center;
+    margin-bottom: 25px;
+    color: #00838f;
+    /* Teal heading */
+    font-weight: bold;
+    font-size: 2.2em;
+}
+
+/* Input fields */
+input {
+    width: 100%;
+    padding: 14px 16px;
+    margin-bottom: 20px;
+    border: 2px solid #b2ebf2;
+    /* Light Teal border */
+    border-radius: 10px;
+    font-size: 16px;
+    transition: border-color 0.3s, box-shadow 0.3s;
+}
+
+input:focus {
+    outline: none;
+    border-color: #00acc1;
+    /* Cyan focus border */
+    box-shadow: 0 0 5px rgba(0, 172, 193, 0.5);
+}
+
+/* Suggestions dropdown */
+#collegeSuggestions {
+    background: #f0f8fa;
+    /* Light Cyan dropdown */
+    border: 1px solid #80deea;
+    /* Teal border */
+    border-top: none;
+    border-radius: 0 0 10px 10px;
+    max-height: 180px;
+    /* Slightly taller */
+    overflow-y: auto;
+    position: relative;
+    top: -14px;
+    /* Adjust position */
+    margin-bottom: 15px;
+    z-index: 10;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+#collegeSuggestions div {
+    padding: 12px;
+    cursor: pointer;
+    transition: background-color 0.2s;
+}
+
+#collegeSuggestions div:hover {
+    background-color: #e0f2f7;
+    /* Very Light Cyan hover */
+}
+
+/* Button */
+button {
+    background: #00acc1;
+    /* Cyan button */
+    color: white;
+    border: none;
+    padding: 14px 20px;
+    /* Increased horizontal padding */
+    width: 100%;
+    border-radius: 10px;
+    font-size: 18px;
+    cursor: pointer;
+    transition: background 0.3s, transform 0.2s;
+    font-weight: bold;
+}
+
+button:hover {
+    background: #0097a7;
+    /* Darker Cyan hover */
+    transform: translateY(-2px);
+    /* Slight lift on hover */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.15);
+}
+
+button:active {
+    transform: translateY(0);
+    /* Reset transform on click */
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.15);
+}
+
+/* Message */
+#message {
+    margin-top: 25px;
+    font-weight: bold;
+    text-align: center;
+    font-size: 17px;
+    color: #26a69a;
+    /* Teal message text */
+}
