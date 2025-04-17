@@ -1,5 +1,3 @@
-const existingUsernames = ["vedantdhoke", "vedant", "vedant@2304"]; // Simulating existing usernames
-
 document.getElementById("registerForm").addEventListener("submit", function(e) {
   e.preventDefault();
 
@@ -10,35 +8,33 @@ document.getElementById("registerForm").addEventListener("submit", function(e) {
   const repassword = document.getElementById("repassword").value;
   const messageDiv = document.getElementById("message");
 
-  // Clear previous message
   messageDiv.textContent = "";
 
-  // Validate password match
   if (password !== repassword) {
     messageDiv.style.color = "red";
     messageDiv.textContent = "Passwords do not match!";
     return;
   }
 
-  // Validate unique username
-  const usernameExists = existingUsernames.some(u => u.toLowerCase() === username);
-  if (usernameExists) {
-    messageDiv.style.color = "red";
-    messageDiv.textContent = "Username already exists!";
-    return;
-  }
+  // Check username availability via XMLHttpRequest
+  const xhr = new XMLHttpRequest();
+  xhr.open("POST", "/check-username", true);
+  xhr.setRequestHeader("Content-Type", "application/json");
 
-  // Simulate adding new user to database
-  existingUsernames.push(username);
+  xhr.onreadystatechange = function () {
+    if (xhr.readyState === XMLHttpRequest.DONE) {
+      const response = JSON.parse(xhr.responseText);
+      if (response.available) {
+        messageDiv.style.color = "green";
+        messageDiv.textContent = "Successfully Registered";
+      } else {
+        messageDiv.style.color = "red";
+        messageDiv.textContent = "Username already exists!";
+      }
+    }
+  };
 
-  // Show success message
-  messageDiv.style.color = "green";
-  messageDiv.textContent = "Successfully Registered";
-
-  // ✅ Removed form reset to preserve field values
-  // document.getElementById("registerForm").reset();
-
-  document.getElementById("collegeSuggestions").innerHTML = "";
+  xhr.send(JSON.stringify({ username }));
 });
 
 // Auto-suggest for college names

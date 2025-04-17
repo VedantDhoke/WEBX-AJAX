@@ -3,7 +3,7 @@ const bodyParser = require("body-parser");
 const app = express();
 const port = 3000;
 
-const registeredUsers = ["john123", "alice456"]; // Simulate existing users
+const registeredUsers = ["vedantdhoke", "vedant@2304"]; // Simulate existing users
 
 app.use(bodyParser.json());
 app.use(express.static(__dirname));
